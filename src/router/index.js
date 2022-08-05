@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from "vue-router";
-import Home from "../views/Home.vue";
+import HomePage from "../views/HomePage.vue";
 import UserManager from "../views/UserManager.vue";
 import AddUser from "../views/AddUser.vue";
 import EditUser from "../views/EditUser.vue";
@@ -8,9 +8,9 @@ import ViewUser from "../views/ViewUser.vue";
 const routes = [
   {
     path: "/",
-    name: "Home",
+    name: "HomePage",
     redirect: "/users",
-    component: Home,
+    component: HomePage,
   },
   {
     path: "/users",

@@ -1,5 +1,5 @@
 <template>
-    <h2>edituser</h2>
+    <h2>home</h2>
 </template>
 
 <script>
