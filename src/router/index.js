@@ -23,12 +23,12 @@ const routes = [
     component: AddUser,
   },
   {
-    path: "/users/edit:userId",
+    path: "/users/edit/:userId",
     name: "EditUser",
     component: EditUser,
   },
   {
-    path: "/users/view:userId",
+    path: "/users/view/:userId",
     name: "ViewUser",
     component: ViewUser,
   },
