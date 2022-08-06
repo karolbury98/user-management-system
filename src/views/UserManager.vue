@@ -29,20 +29,22 @@
       </div>
     </div>
   </div>
-  <div class="container mt-3">
+
+  <div class="container mt-3" v-if="users">
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-6" v-for="user in users" :key="user.id">
             <div class="card my-2">
                 <div class="card-body">
                     <div class="row align-items-center">
                         <div class="col-sm-4">
-                                aavatar
+                               <img :src="user.avatar" alt="avatar" class="user-img">
                         </div>
                         <div class="col-sm-7">
                             <ul class="list-group">
-                                <li class="list-group-item">Name: <span class="fw-bold">Name</span></li>
-                                <li class="list-group-item">E-mail: <span class="fw-bold">e-mail</span></li>
-                                <li class="list-group-item">Phone number: <span class="fw-bold">phone number</span></li>
+                                <li class="list-group-item">Name: <span class="fw-bold">{{ user.name }}</span></li>
+                                <li class="list-group-item">Username: <span class="fw-bold">{{ user.username }}</span></li>
+                                <li class="list-group-item">E-mail: <span class="fw-bold">{{ user.email }}</span></li>
+                                <li class="list-group-item">Phone number: <span class="fw-bold">{{ user.phone }}</span></li>
                             </ul>
                         </div>
                         <div class="col-sm-1 d-flex flex-column justify-content-center align-items-center">
@@ -65,7 +67,27 @@
 </template>
 
 <script>
-export default {};
+import { UserService } from '@/services/UserService';
+
+export default {
+  data() {
+    return {
+      users: [],
+      errorMessage: null
+    };
+  },
+  created: async function() {
+    try {
+      let res = await UserService.getAllUsers();
+      this.users = res.data;
+    } catch(error){
+      this.errorMessage = error;
+    }
+  },
+  methods: {
+
+  }
+};
 </script>
 
 <style>
